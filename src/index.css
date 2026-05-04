@@ -1,0 +1,2 @@
+/* Theme moved to ./styles/index.css. This file is a back-compat shim. */
+@import "./styles/index.css";

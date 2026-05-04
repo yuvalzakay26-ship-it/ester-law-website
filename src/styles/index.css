@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@theme {
+    /* ─── Typography ──────────────────────────────────────────────── */
+    --font-sans: "Assistant", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-display: "Assistant", system-ui, sans-serif;
+
+    /* ─── Brand colors (existing — preserved for backward compat) ── */
+    --color-primary: #0F172A;
+    --color-primary-light: #1E293B;
+    --color-secondary: #F8FAFC;
+    --color-accent: #CA8A04;
+    --color-accent-hover: #A16207;
+    --color-accent-dark: #A16207;
+
+    /* ─── Brand scale (semantic, scalable) ────────────────────────── */
+    --color-brand-50: #F8FAFC;
+    --color-brand-100: #F1F5F9;
+    --color-brand-200: #E2E8F0;
+    --color-brand-500: #475569;
+    --color-brand-700: #1E293B;
+    --color-brand-900: #0F172A;
+
+    --color-accent-50: #FEFCE8;
+    --color-accent-100: #FEF9C3;
+    --color-accent-500: #CA8A04;
+    --color-accent-600: #A16207;
+    --color-accent-700: #854D0E;
+
+    /* ─── Neutrals (semantic aliases over slate) ──────────────────── */
+    --color-neutral-50: #F8FAFC;
+    --color-neutral-100: #F1F5F9;
+    --color-neutral-200: #E2E8F0;
+    --color-neutral-400: #94A3B8;
+    --color-neutral-500: #64748B;
+    --color-neutral-700: #334155;
+    --color-neutral-900: #0F172A;
+
+    /* ─── Semantic radii (for primitives — defaults left intact) ─── */
+    --radius-card: 1rem;
+    --radius-pill: 9999px;
+
+    /* ─── Semantic shadows (for primitives — defaults left intact) ─ */
+    --shadow-card: 0 4px 12px -2px rgb(15 23 42 / 0.06), 0 2px 4px -2px rgb(15 23 42 / 0.04);
+    --shadow-elevated: 0 20px 40px -12px rgb(15 23 42 / 0.12), 0 8px 16px -8px rgb(15 23 42 / 0.06);
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        /* User-controlled text scaling. Defaults to 100%. */
+        font-size: var(--a11y-font-scale, 100%);
+    }
+
+    body {
+        background-color: var(--color-secondary);
+        color: var(--color-primary);
+        font-family: var(--font-sans);
+        line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    /* Visible keyboard focus across the app */
+    :focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+}
+
+/* ───────────── Accessibility user preferences ─────────────
+   Toggled via classes on <html> from AccessibilityContext.
+*/
+
+/* High contrast: black text on white, gold accents stay strong */
+html.a11y-contrast {
+    background-color: #ffffff;
+}
+
+html.a11y-contrast body,
+html.a11y-contrast main,
+html.a11y-contrast section,
+html.a11y-contrast header,
+html.a11y-contrast footer,
+html.a11y-contrast article {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+html.a11y-contrast p,
+html.a11y-contrast span,
+html.a11y-contrast li,
+html.a11y-contrast h1,
+html.a11y-contrast h2,
+html.a11y-contrast h3,
+html.a11y-contrast h4,
+html.a11y-contrast h5,
+html.a11y-contrast h6,
+html.a11y-contrast label,
+html.a11y-contrast cite,
+html.a11y-contrast input,
+html.a11y-contrast textarea,
+html.a11y-contrast select {
+    color: #000000 !important;
+}
+
+html.a11y-contrast a {
+    color: #003b8e !important;
+    text-decoration: underline !important;
+}
+
+html.a11y-contrast button,
+html.a11y-contrast .a11y-keep-button {
+    border: 2px solid #000 !important;
+}
+
+/* Grayscale */
+html.a11y-grayscale body {
+    filter: grayscale(100%);
+}
+
+/* Highlight links */
+html.a11y-highlight-links a:not(.a11y-skip-highlight) {
+    text-decoration: underline !important;
+    text-underline-offset: 3px;
+    outline: 1px dashed currentColor;
+    outline-offset: 2px;
+}
+
+/* Pause animations (user-toggled OR OS-level reduced motion) */
+html.a11y-pause-animations *,
+html.a11y-pause-animations *::before,
+html.a11y-pause-animations *::after,
+html.a11y-reduced-motion *,
+html.a11y-reduced-motion *::before,
+html.a11y-reduced-motion *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(grep -E \"^\\(clsx|tailwind-merge\\)$\")",
+      "Bash(npx eslint *)",
+      "Bash(findstr -i \"sharp canvas jimp pngjs\")",
+      "Bash(npx vite *)"
+    ]
+  }
+}

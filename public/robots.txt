@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.ester-albalak.co.il/sitemap.xml

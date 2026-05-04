@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>אסתר אלבלק | עורכת דין ומגשרת</title>
+  <script>
+    // Restore language + accessibility prefs before React mounts to avoid FOUC.
+    // NOTE: prefix must match brand.slug in src/config/brand.js
+    (function () {
+      try {
+        var SLUG = 'ester-albalak';
+        var lang = localStorage.getItem(SLUG + ':lang');
+        if (lang === 'en' || lang === 'he') {
+          document.documentElement.lang = lang;
+          document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
+        }
+        var a11yRaw = localStorage.getItem(SLUG + ':a11y');
+        if (a11yRaw) {
+          var a11y = JSON.parse(a11yRaw);
+          if (a11y && typeof a11y.fontScale === 'number') {
+            document.documentElement.style.setProperty('--a11y-font-scale', a11y.fontScale + '%');
+          }
+          ['contrast', 'grayscale', 'highlightLinks', 'pauseAnimations'].forEach(function (k) {
+            if (a11y && a11y[k]) {
+              document.documentElement.classList.add('a11y-' + k.replace(/([A-Z])/g, '-$1').toLowerCase());
+            }
+          });
+        }
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

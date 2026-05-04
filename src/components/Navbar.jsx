@@ -24,6 +24,13 @@ export default function Navbar() {
 
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isSwitchingLang, setIsSwitchingLang] = useState(false);
+
+    const handleLangToggle = () => {
+        setIsSwitchingLang(true);
+        toggleLang();
+        setTimeout(() => setIsSwitchingLang(false), 200);
+    };
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -73,6 +80,7 @@ export default function Navbar() {
     };
 
     return (
+        <>
         <header className={`fixed w-full z-40 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'}`}>
 
             {/* Top Bar (Desktop Only) */}
@@ -127,7 +135,7 @@ export default function Navbar() {
                             })}
                         </ul>
 
-                        <LanguageToggle lang={lang} onToggle={toggleLang} ariaLabel={common.languageSwitchAria} />
+                        <LanguageToggle lang={lang} onToggle={handleLangToggle} ariaLabel={common.languageSwitchAria} />
 
                         <button
                             onClick={(e) => handleNavClick(e, '/#contact')}
@@ -139,7 +147,7 @@ export default function Navbar() {
 
                     {/* Mobile actions */}
                     <div className="flex shrink-0 items-center gap-2 sm:gap-3 lg:hidden">
-                        <LanguageToggle lang={lang} onToggle={toggleLang} ariaLabel={common.languageSwitchAria} />
+                        <LanguageToggle lang={lang} onToggle={handleLangToggle} ariaLabel={common.languageSwitchAria} />
                         <button
                             type="button"
                             className="text-primary p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 rounded-md"
@@ -153,10 +161,11 @@ export default function Navbar() {
                     </div>
                 </nav>
             </div>
+        </header>
 
             {/* Mobile Drawer Overlay */}
             <div
-                className={`fixed inset-0 z-[9998] bg-primary/50 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                className={`fixed inset-0 z-[9998] bg-primary/50 transition-opacity duration-300 lg:hidden ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                 onClick={() => setIsOpen(false)}
                 aria-hidden="true"
             ></div>
@@ -167,9 +176,10 @@ export default function Navbar() {
                 role="dialog"
                 aria-modal="true"
                 aria-label={nav.mobileMenuLabel}
-                className={`fixed top-0 ${lang === 'he' ? 'right-0' : 'left-0'} h-full w-4/5 max-w-xs bg-white shadow-2xl z-[9999] transform transition-transform duration-300 lg:hidden ${
+                className={`fixed top-0 ${lang === 'he' ? 'right-0' : 'left-0'} h-full w-4/5 max-w-xs bg-white shadow-2xl z-[9999] transform ${isSwitchingLang ? 'transition-none' : 'transition-transform duration-300'} lg:hidden ${
                     isOpen ? 'translate-x-0' : (lang === 'he' ? 'translate-x-full' : '-translate-x-full')
                 }`}
+                style={{ backgroundColor: '#ffffff' }}
             >
                 <div className="p-6 h-full flex flex-col">
                     <div className="flex justify-between items-center mb-10">
@@ -211,6 +221,6 @@ export default function Navbar() {
                     </div>
                 </div>
             </div>
-        </header>
+        </>
     );
 }

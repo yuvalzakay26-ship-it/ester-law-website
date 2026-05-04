@@ -8,11 +8,11 @@ const base =
 
 const variantStyles = {
     primary:
-        'bg-primary text-secondary shadow-lg shadow-primary/20 hover:bg-primary-light hover:shadow-xl hover:-translate-y-0.5',
+        'bg-primary text-secondary shadow-lg shadow-primary/20 hover:bg-primary-light hover:shadow-xl hover:-translate-y-0.5 dark:bg-accent dark:text-neutral-900 dark:shadow-accent/30 dark:hover:bg-accent-hover',
     secondary:
         'bg-accent text-white shadow-lg shadow-accent/20 hover:bg-accent-dark hover:-translate-y-0.5',
     ghost:
-        'bg-white text-primary border border-neutral-200 hover:border-accent hover:text-accent',
+        'bg-white text-primary border border-neutral-200 hover:border-accent hover:text-accent dark:bg-neutral-800 dark:text-neutral-100 dark:border-neutral-700 dark:hover:border-accent dark:hover:text-accent',
     link:
         'bg-transparent text-accent rounded-none px-0 py-0 underline-offset-4 hover:underline shadow-none',
 };

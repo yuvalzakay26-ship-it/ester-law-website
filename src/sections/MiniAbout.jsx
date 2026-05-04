@@ -12,7 +12,7 @@ export default function MiniAbout() {
             aria-labelledby="about-title"
             spacing="lg"
             background="none"
-            className="overflow-hidden bg-gradient-to-b from-neutral-50/70 via-white to-neutral-50/70"
+            className="overflow-hidden bg-gradient-to-b from-neutral-50/70 via-white to-neutral-50/70 dark:from-neutral-950/70 dark:via-neutral-900 dark:to-neutral-950/70"
         >
             <div
                 aria-hidden="true"
@@ -26,7 +26,7 @@ export default function MiniAbout() {
                             aria-hidden="true"
                             className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-accent/20 via-accent/5 to-transparent blur-2xl"
                         />
-                        <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-neutral-100 shadow-card ring-1 ring-neutral-200/70">
+                        <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-neutral-100 dark:bg-neutral-800 shadow-card ring-1 ring-neutral-200/70 dark:ring-neutral-700/70">
                             <img
                                 src="/logoA.png"
                                 alt="תמונת פרופיל - אסתר אלבלק"
@@ -43,14 +43,14 @@ export default function MiniAbout() {
                     </span>
                     <h2
                         id="about-title"
-                        className="mt-4 text-3xl font-bold tracking-tight text-primary sm:text-4xl lg:text-[2.25rem] lg:leading-[1.2]"
+                        className="mt-4 text-3xl font-bold tracking-tight text-primary dark:text-white sm:text-4xl lg:text-[2.25rem] lg:leading-[1.2]"
                     >
                         {miniAbout.title}
                     </h2>
-                    <p className="mt-6 text-base leading-[1.85] text-neutral-700 sm:text-lg sm:leading-[1.8]">
+                    <p className="mt-6 text-base leading-[1.85] text-neutral-700 dark:text-neutral-300 sm:text-lg sm:leading-[1.8]">
                         {miniAbout.body}
                     </p>
-                    <p className="mt-6 text-sm font-medium text-neutral-500">
+                    <p className="mt-6 text-sm font-medium text-neutral-500 dark:text-neutral-400">
                         — {miniAbout.signature}
                     </p>
                 </Reveal>

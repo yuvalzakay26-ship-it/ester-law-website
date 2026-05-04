@@ -7,9 +7,9 @@ import { getWhatsAppLink } from '../lib/whatsapp';
 import submitContact from '../lib/submitContact';
 
 const inputBase =
-    'w-full rounded-xl border border-neutral-200 bg-white px-4 py-3.5 text-base text-neutral-900 placeholder:text-neutral-400 outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20';
+    'w-full rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 px-4 py-3.5 text-base text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20';
 
-const inputError = 'border-red-300 focus:border-red-400 focus:ring-red-200';
+const inputError = 'border-red-300 dark:border-red-500 focus:border-red-400 focus:ring-red-200';
 
 const PhoneIcon = () => (
     <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -89,7 +89,7 @@ export default function ContactSection() {
             aria-labelledby="contact-title"
             spacing="lg"
             background="none"
-            className="overflow-hidden bg-gradient-to-b from-white via-neutral-50 to-white"
+            className="overflow-hidden bg-gradient-to-b from-white via-neutral-50 to-white dark:from-neutral-900 dark:via-neutral-950 dark:to-neutral-900"
         >
             <div
                 aria-hidden="true"
@@ -102,32 +102,32 @@ export default function ContactSection() {
                 </span>
                 <h2
                     id="contact-title"
-                    className="mt-4 text-3xl font-bold tracking-tight text-primary sm:text-4xl lg:text-[2.5rem] lg:leading-[1.2]"
+                    className="mt-4 text-3xl font-bold tracking-tight text-primary dark:text-white sm:text-4xl lg:text-[2.5rem] lg:leading-[1.2]"
                 >
                     {contact.title}
                 </h2>
-                <p className="mt-5 text-base leading-relaxed text-neutral-600 sm:text-lg sm:leading-[1.7]">
+                <p className="mt-5 text-base leading-relaxed text-neutral-600 dark:text-neutral-300 sm:text-lg sm:leading-[1.7]">
                     {contact.subtitle}
                 </p>
             </Reveal>
 
             <Reveal delay={150} className="relative mx-auto mt-12 max-w-2xl md:mt-14">
-                <div className="rounded-2xl bg-white p-6 shadow-card ring-1 ring-neutral-200/70 sm:p-8 md:p-10">
+                <div className="rounded-2xl bg-white dark:bg-neutral-800 p-6 shadow-card ring-1 ring-neutral-200/70 dark:ring-neutral-700/70 sm:p-8 md:p-10">
                     {status === 'success' ? (
                         <div className="py-6 text-center" role="status" aria-live="polite">
                             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 text-accent">
                                 <CheckIcon />
                             </div>
-                            <h3 className="mt-5 text-xl font-bold text-primary sm:text-2xl">
+                            <h3 className="mt-5 text-xl font-bold text-primary dark:text-white sm:text-2xl">
                                 {form.successTitle}
                             </h3>
-                            <p className="mt-3 text-base text-neutral-600">
+                            <p className="mt-3 text-base text-neutral-600 dark:text-neutral-300">
                                 {form.successMessage}
                             </p>
                             <button
                                 type="button"
                                 onClick={handleReset}
-                                className="mt-6 text-sm font-medium text-neutral-500 underline-offset-4 hover:text-primary hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 rounded"
+                                className="mt-6 text-sm font-medium text-neutral-500 dark:text-neutral-400 underline-offset-4 hover:text-primary dark:hover:text-white hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 rounded"
                             >
                                 {form.reset}
                             </button>
@@ -136,7 +136,7 @@ export default function ContactSection() {
                         <form onSubmit={handleSubmit} noValidate className="space-y-5">
                             <div className="grid gap-5 sm:grid-cols-2">
                                 <div>
-                                    <label htmlFor="cs-name" className="mb-2 block text-sm font-medium text-primary">
+                                    <label htmlFor="cs-name" className="mb-2 block text-sm font-medium text-primary dark:text-neutral-200">
                                         {form.name.label}
                                     </label>
                                     <input
@@ -159,7 +159,7 @@ export default function ContactSection() {
                                 </div>
 
                                 <div>
-                                    <label htmlFor="cs-phone" className="mb-2 block text-sm font-medium text-primary">
+                                    <label htmlFor="cs-phone" className="mb-2 block text-sm font-medium text-primary dark:text-neutral-200">
                                         {form.phone.label}
                                     </label>
                                     <input
@@ -184,9 +184,9 @@ export default function ContactSection() {
                             </div>
 
                             <div>
-                                <label htmlFor="cs-email" className="mb-2 flex items-center gap-2 text-sm font-medium text-primary">
+                                <label htmlFor="cs-email" className="mb-2 flex items-center gap-2 text-sm font-medium text-primary dark:text-neutral-200">
                                     <span>{form.email.label}</span>
-                                    <span className="text-xs font-normal text-neutral-400">({form.email.optional})</span>
+                                    <span className="text-xs font-normal text-neutral-400 dark:text-neutral-500">({form.email.optional})</span>
                                 </label>
                                 <input
                                     id="cs-email"
@@ -202,9 +202,9 @@ export default function ContactSection() {
                             </div>
 
                             <div>
-                                <label htmlFor="cs-message" className="mb-2 flex items-center gap-2 text-sm font-medium text-primary">
+                                <label htmlFor="cs-message" className="mb-2 flex items-center gap-2 text-sm font-medium text-primary dark:text-neutral-200">
                                     <span>{form.message.label}</span>
-                                    <span className="text-xs font-normal text-neutral-400">({form.message.optional})</span>
+                                    <span className="text-xs font-normal text-neutral-400 dark:text-neutral-500">({form.message.optional})</span>
                                 </label>
                                 <textarea
                                     id="cs-message"
@@ -235,7 +235,7 @@ export default function ContactSection() {
                             )}
 
                             {form.trustItems && (
-                                <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 pt-2 text-[13px] text-neutral-500">
+                                <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 pt-2 text-[13px] text-neutral-500 dark:text-neutral-400">
                                     {form.trustItems.map((item) => (
                                         <li key={item} className="inline-flex items-center gap-1.5">
                                             <svg
@@ -256,7 +256,7 @@ export default function ContactSection() {
                                 </ul>
                             )}
 
-                            <p className="pt-1 text-center text-xs text-neutral-400">
+                            <p className="pt-1 text-center text-xs text-neutral-400 dark:text-neutral-500">
                                 {form.privacyNote}{' '}
                                 <a href="/privacy" className="underline-offset-2 hover:text-accent hover:underline">
                                     {form.privacyLink}
@@ -268,12 +268,12 @@ export default function ContactSection() {
             </Reveal>
 
             <Reveal delay={250} className="relative mx-auto mt-10 max-w-2xl text-center md:mt-12">
-                <p className="text-sm text-neutral-500">{contact.altTitle}</p>
+                <p className="text-sm text-neutral-500 dark:text-neutral-400">{contact.altTitle}</p>
                 <ul className="mt-4 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
                     <li>
                         <a
                             href={contact.phoneLink}
-                            className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-700 transition hover:border-accent hover:text-accent"
+                            className="inline-flex items-center gap-2 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-200 transition hover:border-accent dark:hover:border-accent hover:text-accent dark:hover:text-accent"
                         >
                             <PhoneIcon />
                             <span>{contact.contactInfo.phone}</span>
@@ -284,7 +284,7 @@ export default function ContactSection() {
                             href={getWhatsAppLink(contact.whatsappLink || contact.phoneLink)}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-700 transition hover:border-accent hover:text-accent"
+                            className="inline-flex items-center gap-2 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-200 transition hover:border-accent dark:hover:border-accent hover:text-accent dark:hover:text-accent"
                         >
                             <WhatsAppIcon />
                             <span>{contact.contactInfo.whatsapp}</span>
@@ -293,7 +293,7 @@ export default function ContactSection() {
                     <li>
                         <a
                             href={`mailto:${contact.email}`}
-                            className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-700 transition hover:border-accent hover:text-accent"
+                            className="inline-flex items-center gap-2 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-200 transition hover:border-accent dark:hover:border-accent hover:text-accent dark:hover:text-accent"
                         >
                             <MailIcon />
                             <span>{contact.contactInfo.email}</span>

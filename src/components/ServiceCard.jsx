@@ -37,27 +37,27 @@ export default function ServiceCard({ service }) {
     const icon = ICONS[key] ?? FALLBACK_ICON;
 
     return (
-        <div className="group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-neutral-100 hover:border-accent/40 flex flex-col h-full hover:-translate-y-1">
+        <div className="group relative bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-neutral-100 dark:border-neutral-700 hover:border-accent/40 dark:hover:border-accent/40 flex flex-col h-full hover:-translate-y-1">
             <div className="absolute top-6 left-6">
-                <span className="inline-block px-3 py-1 bg-neutral-50 text-neutral-500 text-xs font-semibold rounded-full group-hover:bg-accent/10 group-hover:text-accent transition-colors">
+                <span className="inline-block px-3 py-1 bg-neutral-50 dark:bg-neutral-700 text-neutral-500 dark:text-neutral-300 text-xs font-semibold rounded-full group-hover:bg-accent/10 group-hover:text-accent transition-colors">
                     {badge}
                 </span>
             </div>
 
-            <div className="mb-6 w-14 h-14 rounded-2xl bg-neutral-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-accent transition-all duration-300 group-hover:scale-110">
+            <div className="mb-6 w-14 h-14 rounded-2xl bg-neutral-50 dark:bg-neutral-700 flex items-center justify-center text-primary dark:text-white group-hover:bg-primary dark:group-hover:bg-neutral-900 group-hover:text-accent transition-all duration-300 group-hover:scale-110">
                 <div className="text-current transition-colors duration-300 group-hover:text-accent">
                     {icon}
                 </div>
             </div>
 
-            <h3 className="text-xl font-bold text-primary mb-3 group-hover:text-accent transition-colors">
+            <h3 className="text-xl font-bold text-primary dark:text-white mb-3 group-hover:text-accent transition-colors">
                 {title}
             </h3>
-            <p className="text-neutral-600 leading-relaxed text-sm grow">
+            <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-sm grow">
                 {description}
             </p>
 
-            <div className="mt-6 h-0.5 w-12 bg-neutral-200 group-hover:bg-accent group-hover:w-full transition-all duration-500"></div>
+            <div className="mt-6 h-0.5 w-12 bg-neutral-200 dark:bg-neutral-700 group-hover:bg-accent group-hover:w-full transition-all duration-500"></div>
         </div>
     );
 }

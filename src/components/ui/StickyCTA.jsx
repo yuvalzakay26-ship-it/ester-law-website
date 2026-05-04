@@ -45,7 +45,7 @@ export default function StickyCTA() {
             ].join(' ')}
             style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 0px)' }}
         >
-            <div className="pointer-events-auto bg-gradient-to-t from-white via-white/95 to-white/70 px-4 pt-3 pb-4 shadow-[0_-8px_24px_-12px_rgba(15,23,42,0.18)] ring-1 ring-neutral-200/80 backdrop-blur">
+            <div className="pointer-events-auto bg-gradient-to-t from-white via-white/95 to-white/70 dark:from-neutral-900 dark:via-neutral-900/95 dark:to-neutral-900/70 px-4 pt-3 pb-4 shadow-[0_-8px_24px_-12px_rgba(15,23,42,0.18)] ring-1 ring-neutral-200/80 dark:ring-neutral-700/80 backdrop-blur">
                 <a
                     href="#contact"
                     onClick={handleClick}

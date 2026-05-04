@@ -12,7 +12,7 @@ export default function Testimonials() {
             aria-labelledby="testimonials-title"
             spacing="lg"
             background="none"
-            className="overflow-hidden bg-gradient-to-b from-white via-neutral-50 to-white"
+            className="overflow-hidden bg-gradient-to-b from-white via-neutral-50 to-white dark:from-neutral-900 dark:via-neutral-950 dark:to-neutral-900"
         >
             <div
                 aria-hidden="true"
@@ -22,11 +22,11 @@ export default function Testimonials() {
             <Reveal className="relative mx-auto max-w-2xl text-center">
                 <h2
                     id="testimonials-title"
-                    className="text-3xl font-bold tracking-tight text-primary sm:text-4xl lg:text-[2.5rem] lg:leading-[1.2]"
+                    className="text-3xl font-bold tracking-tight text-primary dark:text-white sm:text-4xl lg:text-[2.5rem] lg:leading-[1.2]"
                 >
                     {testimonials.title}
                 </h2>
-                <p className="mt-5 text-base leading-relaxed text-neutral-600 sm:text-lg sm:leading-[1.7]">
+                <p className="mt-5 text-base leading-relaxed text-neutral-600 dark:text-neutral-300 sm:text-lg sm:leading-[1.7]">
                     {testimonials.subtitle}
                 </p>
             </Reveal>
@@ -37,7 +37,7 @@ export default function Testimonials() {
                         as="li"
                         key={item.name}
                         delay={150 + i * 150}
-                        className="group relative flex h-full flex-col rounded-2xl bg-white p-8 shadow-card ring-1 ring-neutral-200/70 transition-all duration-500 hover:-translate-y-1 hover:shadow-elevated hover:ring-accent/30"
+                        className="group relative flex h-full flex-col rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-card ring-1 ring-neutral-200/70 dark:ring-neutral-700/70 transition-all duration-500 hover:-translate-y-1 hover:shadow-elevated hover:ring-accent/30"
                     >
                         <span
                             aria-hidden="true"
@@ -46,18 +46,18 @@ export default function Testimonials() {
                             &rdquo;
                         </span>
 
-                        <p className="relative grow text-base leading-[1.85] text-neutral-700 sm:text-[1.0625rem]">
+                        <p className="relative grow text-base leading-[1.85] text-neutral-700 dark:text-neutral-200 sm:text-[1.0625rem]">
                             {item.quote}
                         </p>
 
                         <div className="mt-7 flex items-start gap-3">
                             <span aria-hidden="true" className="mt-2 block h-px w-8 shrink-0 bg-accent/50" />
                             <div className="flex flex-col">
-                                <cite className="text-sm font-medium not-italic text-neutral-500">
+                                <cite className="text-sm font-medium not-italic text-neutral-500 dark:text-neutral-400">
                                     {item.name}
                                 </cite>
                                 {item.identity && (
-                                    <span className="mt-1 text-xs text-neutral-400">
+                                    <span className="mt-1 text-xs text-neutral-400 dark:text-neutral-500">
                                         {item.identity}
                                     </span>
                                 )}
@@ -68,7 +68,7 @@ export default function Testimonials() {
             </ul>
 
             <Reveal delay={300} className="relative mx-auto mt-10 max-w-xl text-center md:mt-12">
-                <p className="text-sm text-neutral-600 sm:text-base">
+                <p className="text-sm text-neutral-600 dark:text-neutral-300 sm:text-base">
                     {testimonials.closingLine}
                 </p>
             </Reveal>

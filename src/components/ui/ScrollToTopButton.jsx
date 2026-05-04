@@ -29,7 +29,7 @@ export default function ScrollToTopButton() {
             aria-hidden={!visible}
             className={[
                 'fixed bottom-24 md:bottom-6 z-40 inline-flex h-12 w-12 items-center justify-center rounded-full',
-                'bg-white text-primary shadow-elevated ring-1 ring-neutral-200/80',
+                'bg-white dark:bg-neutral-800 text-primary dark:text-white shadow-elevated ring-1 ring-neutral-200/80 dark:ring-neutral-700/80',
                 'transition-all duration-300 ease-out',
                 'hover:-translate-y-0.5 hover:text-accent hover:ring-accent/40',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2',

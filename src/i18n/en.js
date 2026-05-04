@@ -17,6 +17,8 @@ const en = {
     common: {
         languageToggleLabel: "HE",
         languageSwitchAria: "החלפה לעברית",
+        themeToLight: "Switch to light mode",
+        themeToDark: "Switch to dark mode",
         skipToContent: "Skip to main content",
         scrollToTop: "Back to top",
         openAccessibilityPanel: "Open accessibility menu",
@@ -350,7 +352,9 @@ const en = {
         disclaimer: "Information on this site is general and does not constitute legal advice. Each matter is examined on its own merits and requires individual consultation.",
         compliance: "This website complies with Israeli Standard SI 5568 at Level AA.",
         privacy: "Privacy policy",
-        accessibility: "Accessibility statement"
+        accessibility: "Accessibility statement",
+        creditPrefix: "Website by",
+        creditBrand: "Yuval Digital"
     },
 
     legal: {

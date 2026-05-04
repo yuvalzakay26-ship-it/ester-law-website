@@ -7,7 +7,7 @@ export default function Footer() {
     const { brand, nav, footer, common } = t;
 
     return (
-        <footer className="bg-primary-light text-neutral-400 py-12 border-t border-primary">
+        <footer className="bg-primary-light dark:bg-neutral-950 text-neutral-400 py-12 border-t border-primary dark:border-neutral-800 transition-colors duration-300">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-8">
 
@@ -39,11 +39,22 @@ export default function Footer() {
 
                 </div>
 
-                <div className="mt-8 pt-8 border-t border-primary text-center text-xs max-w-2xl mx-auto space-y-2">
+                <div className="mt-8 pt-8 border-t border-primary dark:border-neutral-800 text-center text-xs max-w-2xl mx-auto space-y-2">
                     <p className="opacity-30">{footer.disclaimer}</p>
                     {footer.compliance && (
                         <p className="opacity-50">{footer.compliance}</p>
                     )}
+                    <p className="text-xs text-neutral-400 opacity-60 pt-2">
+                        {footer.creditPrefix}{' '}
+                        <a
+                            href="https://yuval-digital.co.il"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-secondary transition-colors"
+                        >
+                            {footer.creditBrand}
+                        </a>
+                    </p>
                 </div>
             </div>
         </footer>

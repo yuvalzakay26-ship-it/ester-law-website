@@ -7,10 +7,10 @@ export default function FAQItem({ question, answer, isOpen, onToggle }) {
 
     return (
         <div
-            className={`group rounded-2xl bg-gradient-to-b from-white to-neutral-50 ring-1 shadow-sm transition-all duration-300 ease-out ${
+            className={`group rounded-2xl bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-800 ring-1 shadow-sm transition-all duration-300 ease-out ${
                 isOpen
                     ? 'ring-accent/30 shadow-md'
-                    : 'ring-neutral-200 hover:ring-accent/20 hover:from-white hover:to-white'
+                    : 'ring-neutral-200 dark:ring-neutral-700 hover:ring-accent/20 hover:from-white hover:to-white dark:hover:from-neutral-800 dark:hover:to-neutral-800'
             }`}
         >
             <h3>
@@ -29,7 +29,7 @@ export default function FAQItem({ question, answer, isOpen, onToggle }) {
                         className={`relative flex-shrink-0 w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all duration-300 ease-out ${
                             isOpen
                                 ? 'bg-accent/10 text-accent rotate-45'
-                                : 'bg-neutral-100 text-neutral-600 group-hover:bg-neutral-200/70'
+                                : 'bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-200 group-hover:bg-neutral-200/70 dark:group-hover:bg-neutral-600/70'
                         }`}
                     >
                         <span className="absolute h-[2px] w-3.5 bg-current rounded-full" />
@@ -38,7 +38,7 @@ export default function FAQItem({ question, answer, isOpen, onToggle }) {
 
                     <span
                         className={`flex-1 text-base md:text-lg font-semibold leading-snug transition-colors duration-300 ${
-                            isOpen ? 'text-primary' : 'text-neutral-700 group-hover:text-primary'
+                            isOpen ? 'text-primary dark:text-white' : 'text-neutral-700 dark:text-neutral-200 group-hover:text-primary dark:group-hover:text-white'
                         }`}
                     >
                         {question}
@@ -57,7 +57,7 @@ export default function FAQItem({ question, answer, isOpen, onToggle }) {
             >
                 <div className="overflow-hidden">
                     <div
-                        className={`px-5 md:px-6 pb-5 md:pb-6 pr-[3.75rem] md:pr-[4.5rem] text-neutral-600 leading-relaxed transition-all duration-300 ease-out ${
+                        className={`px-5 md:px-6 pb-5 md:pb-6 pr-[3.75rem] md:pr-[4.5rem] text-neutral-600 dark:text-neutral-300 leading-relaxed transition-all duration-300 ease-out ${
                             isOpen ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0'
                         }`}
                     >

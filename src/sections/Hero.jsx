@@ -5,8 +5,8 @@ import { useLanguage } from '../context/LanguageContext';
 
 function TrustItem({ icon, children }) {
     return (
-        <li className="flex items-center gap-2 text-sm font-medium text-neutral-600">
-            <span aria-hidden="true" className="text-neutral-500">
+        <li className="flex items-center gap-2 text-sm font-medium text-neutral-600 dark:text-neutral-300">
+            <span aria-hidden="true" className="text-neutral-500 dark:text-neutral-400">
                 {icon}
             </span>
             <span>{children}</span>
@@ -47,7 +47,7 @@ export default function Hero() {
             spacing="none"
             background="none"
             container={false}
-            className="overflow-hidden bg-gradient-to-b from-neutral-50 via-white to-neutral-50 pt-28 pb-20 lg:pt-36 lg:pb-28"
+            className="overflow-hidden bg-gradient-to-b from-neutral-50 via-white to-neutral-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950 pt-28 pb-20 lg:pt-36 lg:pb-28"
         >
             <div
                 aria-hidden="true"
@@ -59,21 +59,21 @@ export default function Hero() {
             />
             <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-white/60"
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-white/60 dark:to-neutral-950/60"
             />
 
             <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
 
                     <Reveal className={`order-2 ${isRTL ? 'text-right' : 'text-left'} lg:order-1 lg:col-span-7`}>
-                        <span className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/70 px-4 py-1.5 text-xs font-semibold tracking-wide text-neutral-700 shadow-sm backdrop-blur sm:text-sm">
+                        <span className="inline-flex items-center gap-2 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white/70 dark:bg-neutral-800/70 px-4 py-1.5 text-xs font-semibold tracking-wide text-neutral-700 dark:text-neutral-200 shadow-sm backdrop-blur sm:text-sm">
                             <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-accent" />
                             {hero.eyebrow}
                         </span>
 
                         <h1
                             id="hero-title"
-                            className="mt-6 text-4xl font-bold leading-[1.15] tracking-tight text-primary sm:text-5xl lg:text-6xl"
+                            className="mt-6 text-4xl font-bold leading-[1.15] tracking-tight text-primary dark:text-white sm:text-5xl lg:text-6xl"
                         >
                             {hero.title}
                             <br className="hidden sm:block" />{' '}
@@ -86,7 +86,7 @@ export default function Hero() {
                             </span>
                         </h1>
 
-                        <p className="mt-8 max-w-xl text-lg leading-relaxed text-neutral-600 lg:text-xl">
+                        <p className="mt-8 max-w-xl text-lg leading-relaxed text-neutral-600 dark:text-neutral-300 lg:text-xl">
                             {hero.subtitle}
                         </p>
 
@@ -95,7 +95,7 @@ export default function Hero() {
                                 <Button as="a" href="#contact" variant="primary" size="lg" className="w-full sm:w-auto">
                                     {hero.ctaPrimary}
                                 </Button>
-                                <p className="mt-2 text-xs text-neutral-500">
+                                <p className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
                                     {hero.ctaPrimaryNote}
                                 </p>
                             </div>
@@ -106,7 +106,7 @@ export default function Hero() {
 
                         <ul
                             aria-label={hero.trustItemsLabel}
-                            className="mt-8 flex flex-col gap-2.5 border-t border-neutral-200/70 pt-6 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-2"
+                            className="mt-8 flex flex-col gap-2.5 border-t border-neutral-200/70 dark:border-neutral-700/70 pt-6 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-2"
                         >
                             {hero.trustItems.map((item, i) => (
                                 <TrustItem key={item} icon={TRUST_ICONS[i]}>{item}</TrustItem>
@@ -120,7 +120,7 @@ export default function Hero() {
                                 aria-hidden="true"
                                 className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-accent/25 via-accent/5 to-transparent blur-2xl"
                             />
-                            <div className="group relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-neutral-100 shadow-elevated ring-1 ring-neutral-200/70 transition-transform duration-700 ease-out hover:-translate-y-1">
+                            <div className="group relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-neutral-100 dark:bg-neutral-800 shadow-elevated ring-1 ring-neutral-200/70 dark:ring-neutral-700/70 transition-transform duration-700 ease-out hover:-translate-y-1">
                                 <img
                                     src="/logoA.png"
                                     alt="תמונת פרופיל - אסתר אלבלק"

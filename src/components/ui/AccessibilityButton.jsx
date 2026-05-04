@@ -42,7 +42,7 @@ export default function AccessibilityButton() {
                 className={[
                     'fixed bottom-24 md:bottom-6 left-5 sm:left-6 z-40',
                     'inline-flex h-12 w-12 items-center justify-center rounded-full',
-                    'bg-accent text-white shadow-elevated ring-2 ring-white',
+                    'bg-accent text-white shadow-elevated ring-2 ring-white dark:ring-neutral-900',
                     'transition-all duration-300 ease-out',
                     'hover:-translate-y-0.5 hover:bg-accent-dark',
                     'focus:outline-none focus-visible:ring-4 focus-visible:ring-accent/40',

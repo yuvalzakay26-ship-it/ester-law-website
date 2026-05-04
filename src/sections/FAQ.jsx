@@ -18,16 +18,16 @@ export default function FAQ() {
     };
 
     return (
-        <section id="faq" aria-labelledby="faq-title" className="py-24 bg-neutral-50 relative overflow-hidden">
+        <section id="faq" aria-labelledby="faq-title" className="py-24 bg-neutral-50 dark:bg-neutral-950 relative overflow-hidden transition-colors duration-300">
             <div className={`absolute top-0 ${isRTL ? 'right-0 translate-x-1/2' : 'left-0 -translate-x-1/2'} w-96 h-96 bg-accent/10 rounded-full blur-3xl -translate-y-1/2 opacity-60 pointer-events-none`}></div>
 
             <div className="container mx-auto px-6 relative z-10">
 
                 <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 id="faq-title" className="text-3xl md:text-5xl font-bold text-primary mb-6">
+                    <h2 id="faq-title" className="text-3xl md:text-5xl font-bold text-primary dark:text-white mb-6">
                         {faq.title}
                     </h2>
-                    <p className="text-lg text-neutral-600 leading-relaxed">
+                    <p className="text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed">
                         {faq.subtitle}
                     </p>
                 </div>
@@ -49,7 +49,7 @@ export default function FAQ() {
                             <a
                                 href="#contact"
                                 onClick={scrollToContact}
-                                className="inline-flex items-center gap-2 text-primary font-bold border-b-2 border-accent hover:text-accent hover:border-primary transition-all pb-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
+                                className="inline-flex items-center gap-2 text-primary dark:text-white font-bold border-b-2 border-accent hover:text-accent dark:hover:text-accent hover:border-primary dark:hover:border-white transition-all pb-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
                             >
                                 {faq.cta}
                                 <svg className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
@@ -58,7 +58,7 @@ export default function FAQ() {
                     </div>
 
                     <div className="lg:col-span-5 lg:sticky lg:top-32 order-last lg:order-none mt-8 lg:mt-0">
-                        <div className="bg-white p-8 rounded-2xl shadow-xl border border-neutral-100 relative overflow-hidden">
+                        <div className="bg-white dark:bg-neutral-800 p-8 rounded-2xl shadow-xl border border-neutral-100 dark:border-neutral-700 relative overflow-hidden">
                             <div className="absolute top-0 left-0 w-24 h-24 bg-accent/10 rounded-br-full -translate-x-4 -translate-y-4"></div>
 
                             <div className="flex items-center gap-3 mb-6">
@@ -67,7 +67,7 @@ export default function FAQ() {
                                 </span>
                             </div>
 
-                            <h3 className="text-2xl font-bold text-primary mb-6">
+                            <h3 className="text-2xl font-bold text-primary dark:text-white mb-6">
                                 {faq.trustCard.title}
                             </h3>
 
@@ -75,7 +75,7 @@ export default function FAQ() {
                                 {faq.trustCard.points.map((point, i) => (
                                     <li key={i} className="flex items-start gap-3">
                                         <svg className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                                        <span className="text-neutral-600 font-medium">{point}</span>
+                                        <span className="text-neutral-600 dark:text-neutral-300 font-medium">{point}</span>
                                     </li>
                                 ))}
                             </ul>

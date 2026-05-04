@@ -17,6 +17,8 @@ const he = {
     common: {
         languageToggleLabel: "EN",
         languageSwitchAria: "Switch to English",
+        themeToLight: "מעבר למצב בהיר",
+        themeToDark: "מעבר למצב כהה",
         skipToContent: "דלג לתוכן הראשי",
         scrollToTop: "חזרה לראש העמוד",
         openAccessibilityPanel: "פתיחת תפריט נגישות",
@@ -350,7 +352,9 @@ const he = {
         disclaimer: "המידע באתר הוא כללי בלבד ואינו מהווה ייעוץ משפטי. כל מקרה נבחן לגופו ומחייב התייעצות אישית.",
         compliance: "האתר עומד בדרישות תקן ישראלי ת״י 5568 ברמת AA.",
         privacy: "מדיניות פרטיות",
-        accessibility: "הצהרת נגישות"
+        accessibility: "הצהרת נגישות",
+        creditPrefix: "האתר נבנה ע״י",
+        creditBrand: "Yuval Digital"
     },
 
     legal: {

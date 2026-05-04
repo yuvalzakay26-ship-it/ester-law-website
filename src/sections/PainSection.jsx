@@ -11,7 +11,7 @@ export default function PainSection() {
             id="pain"
             spacing="lg"
             background="none"
-            className="overflow-hidden bg-gradient-to-b from-white via-neutral-50/60 to-white"
+            className="overflow-hidden bg-gradient-to-b from-white via-neutral-50/60 to-white dark:from-neutral-900 dark:via-neutral-950/60 dark:to-neutral-900"
         >
             <div
                 aria-hidden="true"
@@ -23,7 +23,7 @@ export default function PainSection() {
             />
 
             <div className={`relative mx-auto max-w-2xl ${isRTL ? 'text-right' : 'text-left'}`}>
-                <Reveal as="p" className="text-sm font-medium tracking-wide text-neutral-500 sm:text-base">
+                <Reveal as="p" className="text-sm font-medium tracking-wide text-neutral-500 dark:text-neutral-400 sm:text-base">
                     {pain.intro}
                 </Reveal>
 
@@ -33,7 +33,7 @@ export default function PainSection() {
                             as="li"
                             key={i}
                             delay={120 + i * 120}
-                            className={`group relative ${isRTL ? 'pr-6' : 'pl-6'} text-lg leading-[1.85] text-primary sm:text-xl sm:leading-[1.75]`}
+                            className={`group relative ${isRTL ? 'pr-6' : 'pl-6'} text-lg leading-[1.85] text-primary dark:text-neutral-100 sm:text-xl sm:leading-[1.75]`}
                         >
                             <span
                                 aria-hidden="true"
@@ -47,7 +47,7 @@ export default function PainSection() {
                 <Reveal
                     as="p"
                     delay={520}
-                    className="mt-16 text-base leading-relaxed text-neutral-500 sm:mt-20"
+                    className="mt-16 text-base leading-relaxed text-neutral-500 dark:text-neutral-400 sm:mt-20"
                 >
                     {pain.outro}
                 </Reveal>

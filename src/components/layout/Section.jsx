@@ -10,10 +10,10 @@ const spacingStyles = {
 
 const backgroundStyles = {
     none: '',
-    white: 'bg-white',
-    light: 'bg-secondary',
-    muted: 'bg-neutral-50',
-    dark: 'bg-primary text-secondary',
+    white: 'bg-white dark:bg-neutral-900',
+    light: 'bg-secondary dark:bg-neutral-900',
+    muted: 'bg-neutral-50 dark:bg-neutral-900',
+    dark: 'bg-primary text-secondary dark:bg-neutral-950 dark:text-neutral-100',
 };
 
 export default function Section({
@@ -30,7 +30,7 @@ export default function Section({
         <section
             id={id}
             className={cn(
-                'relative',
+                'relative transition-colors duration-300',
                 spacingStyles[spacing],
                 backgroundStyles[background],
                 className,

@@ -31,7 +31,7 @@ function Toggle({ id, label, active, isRTL, onChange }) {
     const switchClass = [
         'relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors duration-200 ease-out',
         'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2',
-        active ? 'bg-accent' : 'bg-neutral-300',
+        active ? 'bg-accent' : 'bg-neutral-300 dark:bg-neutral-600',
     ].join(' ');
 
     const knobClass = [
@@ -43,7 +43,7 @@ function Toggle({ id, label, active, isRTL, onChange }) {
 
     return (
         <li className="flex items-center justify-between gap-4 py-3">
-            <label htmlFor={id} className="text-sm font-medium text-neutral-700 cursor-pointer">
+            <label htmlFor={id} className="text-sm font-medium text-neutral-700 dark:text-neutral-200 cursor-pointer">
                 {label}
             </label>
             <button
@@ -139,7 +139,7 @@ export default function AccessibilityPanel({ open, onClose }) {
                 aria-labelledby="a11y-panel-title"
                 aria-hidden={!open}
                 className={[
-                    'fixed bottom-24 z-50 w-[min(92vw,22rem)] rounded-2xl bg-white shadow-elevated ring-1 ring-neutral-200',
+                    'fixed bottom-24 z-50 w-[min(92vw,22rem)] rounded-2xl bg-white dark:bg-neutral-800 shadow-elevated ring-1 ring-neutral-200 dark:ring-neutral-700',
                     'transition-all duration-200 ease-out',
                     'right-5 sm:right-6',
                     open
@@ -147,19 +147,19 @@ export default function AccessibilityPanel({ open, onClose }) {
                         : 'opacity-0 translate-y-3 pointer-events-none',
                 ].join(' ')}
             >
-                <header className="flex items-start justify-between gap-3 border-b border-neutral-100 p-5">
+                <header className="flex items-start justify-between gap-3 border-b border-neutral-100 dark:border-neutral-700 p-5">
                     <div>
-                        <h2 id="a11y-panel-title" className="text-base font-bold text-primary">
+                        <h2 id="a11y-panel-title" className="text-base font-bold text-primary dark:text-white">
                             {labels.title}
                         </h2>
-                        <p className="mt-1 text-xs text-neutral-500">{labels.subtitle}</p>
+                        <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">{labels.subtitle}</p>
                     </div>
                     <button
                         ref={closeBtnRef}
                         type="button"
                         onClick={onClose}
                         aria-label={labels.close}
-                        className="-m-1 rounded-md p-1 text-neutral-400 transition hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                        className="-m-1 rounded-md p-1 text-neutral-400 dark:text-neutral-500 transition hover:text-primary dark:hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
                     >
                         <CloseIcon />
                     </button>
@@ -168,19 +168,19 @@ export default function AccessibilityPanel({ open, onClose }) {
                 <div className="p-5">
                     {/* Text size */}
                     <div className="mb-4">
-                        <p className="mb-2 text-sm font-medium text-neutral-700">{labels.textSize}</p>
+                        <p className="mb-2 text-sm font-medium text-neutral-700 dark:text-neutral-200">{labels.textSize}</p>
                         <div className="flex items-center gap-3">
                             <button
                                 type="button"
                                 onClick={decreaseText}
                                 disabled={!canDecrease}
                                 aria-label={labels.decrease}
-                                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 text-neutral-600 transition hover:border-accent hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-neutral-200 disabled:hover:text-neutral-600"
+                                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 transition hover:border-accent hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-neutral-200 dark:disabled:hover:border-neutral-700 disabled:hover:text-neutral-600 dark:disabled:hover:text-neutral-300"
                             >
                                 <MinusIcon />
                             </button>
                             <div
-                                className="flex-1 text-center text-sm font-semibold tabular-nums text-primary"
+                                className="flex-1 text-center text-sm font-semibold tabular-nums text-primary dark:text-white"
                                 aria-live="polite"
                                 aria-label={`${labels.currentSize}: ${settings.fontScale}%`}
                             >
@@ -191,7 +191,7 @@ export default function AccessibilityPanel({ open, onClose }) {
                                 onClick={increaseText}
                                 disabled={!canIncrease}
                                 aria-label={labels.increase}
-                                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 text-neutral-600 transition hover:border-accent hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-neutral-200 disabled:hover:text-neutral-600"
+                                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 transition hover:border-accent hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-neutral-200 dark:disabled:hover:border-neutral-700 disabled:hover:text-neutral-600 dark:disabled:hover:text-neutral-300"
                             >
                                 <PlusIcon />
                             </button>
@@ -199,7 +199,7 @@ export default function AccessibilityPanel({ open, onClose }) {
                     </div>
 
                     {/* Toggles */}
-                    <ul className="divide-y divide-neutral-100">
+                    <ul className="divide-y divide-neutral-100 dark:divide-neutral-700">
                         <Toggle
                             id="a11y-contrast"
                             label={labels.contrast}
@@ -234,7 +234,7 @@ export default function AccessibilityPanel({ open, onClose }) {
                         <button
                             type="button"
                             onClick={reset}
-                            className="text-xs font-medium text-neutral-500 underline-offset-4 transition hover:text-primary hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 rounded"
+                            className="text-xs font-medium text-neutral-500 dark:text-neutral-400 underline-offset-4 transition hover:text-primary dark:hover:text-white hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 rounded"
                         >
                             {labels.reset}
                         </button>

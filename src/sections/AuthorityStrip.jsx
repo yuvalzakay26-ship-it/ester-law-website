@@ -32,10 +32,10 @@ export default function AuthorityStrip() {
     return (
         <section
             aria-label={authority.label}
-            className="relative -mt-2 border-y border-neutral-200/70 bg-white/80 backdrop-blur"
+            className="relative -mt-2 border-y border-neutral-200/70 dark:border-neutral-700/70 bg-white/80 dark:bg-neutral-900/80 backdrop-blur transition-colors duration-300"
         >
             <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-                <ul className="grid grid-cols-1 divide-y divide-neutral-200/70 sm:grid-cols-3 sm:divide-y-0 sm:divide-x sm:divide-x-reverse">
+                <ul className="grid grid-cols-1 divide-y divide-neutral-200/70 dark:divide-neutral-700/70 sm:grid-cols-3 sm:divide-y-0 sm:divide-x sm:divide-x-reverse">
                     {authority.items.map((item, i) => {
                         const Icon = AUTHORITY_ICONS[i];
                         return (
@@ -49,10 +49,10 @@ export default function AuthorityStrip() {
                                     {Icon}
                                 </span>
                                 <span className="flex flex-col">
-                                    <span className="text-sm font-bold text-primary sm:text-base">
+                                    <span className="text-sm font-bold text-primary dark:text-white sm:text-base">
                                         {item.title}
                                     </span>
-                                    <span className="text-xs text-neutral-500 sm:text-sm">
+                                    <span className="text-xs text-neutral-500 dark:text-neutral-400 sm:text-sm">
                                         {item.subtitle}
                                     </span>
                                 </span>

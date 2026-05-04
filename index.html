@@ -16,6 +16,9 @@
     // NOTE: prefix must match brand.slug in src/config/brand.js
     (function () {
       try {
+        var theme = localStorage.getItem('theme');
+        if (theme !== 'dark' && theme !== 'light') theme = 'light';
+        if (theme === 'dark') document.documentElement.classList.add('dark');
         var SLUG = 'ester-albalak';
         var lang = localStorage.getItem(SLUG + ':lang');
         if (lang === 'en' || lang === 'he') {

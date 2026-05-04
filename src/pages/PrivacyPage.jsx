@@ -14,7 +14,7 @@ export default function PrivacyPage() {
     }, []);
 
     return (
-        <div className="pt-32 pb-20 bg-secondary min-h-screen">
+        <div className="pt-32 pb-20 bg-secondary dark:bg-neutral-950 min-h-screen transition-colors duration-300">
             <SeoLangTags domain={brand.domain} path="/privacy" />
             <Helmet>
                 <title>{pageSeo.title}</title>
@@ -26,20 +26,20 @@ export default function PrivacyPage() {
             </Helmet>
 
             <div className="container mx-auto px-4 max-w-3xl">
-                <h1 className="text-4xl font-bold text-primary mb-3">{privacy.title}</h1>
-                <p className="text-sm text-neutral-500 mb-12">{privacy.lastUpdated}</p>
+                <h1 className="text-4xl font-bold text-primary dark:text-white mb-3">{privacy.title}</h1>
+                <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-12">{privacy.lastUpdated}</p>
 
-                <div className="bg-white p-8 md:p-12 rounded-2xl shadow-sm space-y-8">
+                <div className="bg-white dark:bg-neutral-800 p-8 md:p-12 rounded-2xl shadow-sm space-y-8">
                     {privacy.sections.map((section, index) => (
                         <div key={index}>
-                            <h2 className="text-xl font-bold text-primary mb-3">{section.heading}</h2>
+                            <h2 className="text-xl font-bold text-primary dark:text-white mb-3">{section.heading}</h2>
                             {section.content && (
-                                <p className="text-neutral-600 leading-relaxed">
+                                <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed">
                                     {section.content}
                                 </p>
                             )}
                             {section.items && (
-                                <ul className="list-disc list-inside space-y-2 text-neutral-600 mt-3">
+                                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-300 mt-3">
                                     {section.items.map((item, i) => (
                                         <li key={i}>{item}</li>
                                     ))}
@@ -49,10 +49,10 @@ export default function PrivacyPage() {
                     ))}
 
                     {privacy.contact && (
-                        <div className="border-t border-neutral-100 pt-8">
-                            <h2 className="text-xl font-bold text-primary mb-4">{privacy.contact.heading}</h2>
-                            <p className="text-neutral-600 mb-4">{privacy.contact.intro}</p>
-                            <div className="space-y-2 text-neutral-700">
+                        <div className="border-t border-neutral-100 dark:border-neutral-700 pt-8">
+                            <h2 className="text-xl font-bold text-primary dark:text-white mb-4">{privacy.contact.heading}</h2>
+                            <p className="text-neutral-600 dark:text-neutral-300 mb-4">{privacy.contact.intro}</p>
+                            <div className="space-y-2 text-neutral-700 dark:text-neutral-200">
                                 <p>
                                     <span className="font-bold">{privacy.contact.businessPrefix}</span> {brand.fullName}
                                 </p>

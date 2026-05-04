@@ -11,16 +11,59 @@ function LanguageToggle({ lang, onToggle, ariaLabel, className = '' }) {
             type="button"
             onClick={onToggle}
             aria-label={ariaLabel}
-            className={`inline-flex items-center justify-center rounded-full border border-neutral-200 bg-white/70 px-3 py-1.5 text-xs font-bold tracking-wide text-neutral-600 transition hover:border-accent hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 ${className}`}
+            className={`inline-flex items-center justify-center rounded-full border border-neutral-200 bg-white/70 px-3 py-1.5 text-xs font-bold tracking-wide text-neutral-600 transition-colors duration-300 hover:border-accent hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 dark:border-neutral-700 dark:bg-neutral-800/70 dark:text-neutral-200 dark:hover:border-accent dark:hover:text-accent ${className}`}
         >
             <span aria-hidden="true">{lang === 'he' ? 'EN' : 'HE'}</span>
         </button>
     );
 }
 
+function ThemeToggle({ theme, onToggle, ariaLabel, className = '' }) {
+    const isDark = theme === 'dark';
+    return (
+        <button
+            type="button"
+            onClick={onToggle}
+            aria-label={ariaLabel}
+            aria-pressed={isDark}
+            className={`inline-flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 bg-white/70 text-neutral-600 transition-colors duration-300 hover:border-accent hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 dark:border-neutral-700 dark:bg-neutral-800/70 dark:text-neutral-200 dark:hover:border-accent dark:hover:text-accent ${className}`}
+        >
+            {isDark ? (
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+            ) : (
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+            )}
+        </button>
+    );
+}
+
+function useTheme() {
+    const [theme, setTheme] = useState(() => {
+        if (typeof window === 'undefined') return 'light';
+        const stored = window.localStorage.getItem('theme');
+        return stored === 'dark' ? 'dark' : 'light';
+    });
+
+    useEffect(() => {
+        const root = document.documentElement;
+        if (theme === 'dark') root.classList.add('dark');
+        else root.classList.remove('dark');
+        try { window.localStorage.setItem('theme', theme); } catch { /* ignore */ }
+    }, [theme]);
+
+    const toggle = () => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    return { theme, toggle };
+}
+
 export default function Navbar() {
     const { t, lang, toggle: toggleLang } = useLanguage();
     const { nav, brand, common } = t;
+    const { theme, toggle: toggleTheme } = useTheme();
+    const themeAriaLabel = theme === 'dark' ? common.themeToLight : common.themeToDark;
 
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
@@ -81,11 +124,11 @@ export default function Navbar() {
 
     return (
         <>
-        <header className={`fixed w-full z-40 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'}`}>
+        <header className={`fixed w-full z-40 transition-all duration-300 ${isScrolled ? 'bg-white/95 dark:bg-neutral-900/95 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'}`}>
 
             {/* Top Bar (Desktop Only) */}
             <div className={`hidden lg:block container mx-auto px-6 mb-3 transition-opacity duration-300 ${isScrolled ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100'}`}>
-                <div className="flex justify-between items-center text-sm font-medium text-neutral-500 border-b border-neutral-200/60 pb-2">
+                <div className="flex justify-between items-center text-sm font-medium text-neutral-500 dark:text-neutral-400 border-b border-neutral-200/60 dark:border-neutral-700/60 pb-2">
                     <div className="flex gap-6">
                         <a href={`tel:${brand.phone}`} className="hover:text-accent transition-colors flex items-center gap-2">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
@@ -124,7 +167,7 @@ export default function Navbar() {
                                             href={link.href}
                                             onClick={(e) => handleNavClick(e, link.href)}
                                             className={`text-[15px] font-medium transition-all relative py-1
-                        ${isActive ? 'text-accent' : 'text-neutral-700 hover:text-accent'}
+                        ${isActive ? 'text-accent' : 'text-neutral-700 dark:text-neutral-200 hover:text-accent dark:hover:text-accent'}
                       `}
                                         >
                                             {link.name}
@@ -135,11 +178,12 @@ export default function Navbar() {
                             })}
                         </ul>
 
+                        <ThemeToggle theme={theme} onToggle={toggleTheme} ariaLabel={themeAriaLabel} />
                         <LanguageToggle lang={lang} onToggle={handleLangToggle} ariaLabel={common.languageSwitchAria} />
 
                         <button
                             onClick={(e) => handleNavClick(e, '/#contact')}
-                            className="bg-primary text-secondary px-6 py-2.5 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-primary-light transform hover:-translate-y-0.5 transition-all text-sm"
+                            className="bg-primary text-secondary px-6 py-2.5 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-primary-light dark:bg-accent dark:text-neutral-900 dark:hover:bg-accent-hover transform hover:-translate-y-0.5 transition-all text-sm"
                         >
                             {nav.cta}
                         </button>
@@ -147,10 +191,11 @@ export default function Navbar() {
 
                     {/* Mobile actions */}
                     <div className="flex shrink-0 items-center gap-2 sm:gap-3 lg:hidden">
+                        <ThemeToggle theme={theme} onToggle={toggleTheme} ariaLabel={themeAriaLabel} />
                         <LanguageToggle lang={lang} onToggle={handleLangToggle} ariaLabel={common.languageSwitchAria} />
                         <button
                             type="button"
-                            className="text-primary p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 rounded-md"
+                            className="text-primary dark:text-neutral-100 p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 rounded-md"
                             onClick={() => setIsOpen(true)}
                             aria-label={common.openMenu}
                             aria-expanded={isOpen}
@@ -176,17 +221,16 @@ export default function Navbar() {
                 role="dialog"
                 aria-modal="true"
                 aria-label={nav.mobileMenuLabel}
-                className={`fixed top-0 ${lang === 'he' ? 'right-0' : 'left-0'} h-full w-4/5 max-w-xs bg-white shadow-2xl z-[9999] transform ${isSwitchingLang ? 'transition-none' : 'transition-transform duration-300'} lg:hidden ${
+                className={`fixed top-0 ${lang === 'he' ? 'right-0' : 'left-0'} h-full w-4/5 max-w-xs bg-white dark:bg-neutral-900 shadow-2xl z-[9999] transform ${isSwitchingLang ? 'transition-none' : 'transition-transform duration-300'} lg:hidden ${
                     isOpen ? 'translate-x-0' : (lang === 'he' ? 'translate-x-full' : '-translate-x-full')
                 }`}
-                style={{ backgroundColor: '#ffffff' }}
             >
                 <div className="p-6 h-full flex flex-col">
                     <div className="flex justify-between items-center mb-10">
                         <Logo variant="dark" />
                         <button
                             onClick={() => setIsOpen(false)}
-                            className="text-neutral-400 hover:text-primary transition-colors p-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 rounded-md"
+                            className="text-neutral-400 hover:text-primary dark:hover:text-white transition-colors p-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 rounded-md"
                             aria-label={common.closeMenu}
                         >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -199,7 +243,7 @@ export default function Navbar() {
                                 <a
                                     href={link.href}
                                     onClick={(e) => handleNavClick(e, link.href)}
-                                    className="block text-neutral-700 hover:text-accent transition-colors"
+                                    className="block text-neutral-700 dark:text-neutral-200 hover:text-accent dark:hover:text-accent transition-colors"
                                 >
                                     {link.name}
                                 </a>
@@ -207,14 +251,14 @@ export default function Navbar() {
                         ))}
                     </ul>
 
-                    <div className="mt-auto pt-8 border-t border-neutral-100">
+                    <div className="mt-auto pt-8 border-t border-neutral-100 dark:border-neutral-800">
                         <button
                             onClick={(e) => handleNavClick(e, '/#contact')}
-                            className="w-full bg-primary text-secondary py-3 rounded-xl font-bold hover:shadow-lg transition-all"
+                            className="w-full bg-primary text-secondary dark:bg-accent dark:text-neutral-900 dark:hover:bg-accent-hover py-3 rounded-xl font-bold hover:shadow-lg transition-all"
                         >
                             {nav.cta}
                         </button>
-                        <div className="mt-6 flex justify-center gap-6 text-neutral-400">
+                        <div className="mt-6 flex justify-center gap-6 text-neutral-400 dark:text-neutral-500">
                             <a href={`tel:${brand.phone}`} aria-label={brand.phone} className="hover:text-accent"><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg></a>
                             <a href={`mailto:${brand.email}`} aria-label={brand.email} className="hover:text-accent"><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg></a>
                         </div>

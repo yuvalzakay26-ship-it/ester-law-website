@@ -23,12 +23,15 @@ export default function Logo({ variant = 'dark', className = '' }) {
                 />
             </div>
 
-            <div className="flex flex-col justify-center">
-                <span className="text-xl font-bold leading-none tracking-wide" style={{ color: textColor }}>
+            <div className="flex min-w-0 flex-col justify-center max-w-[140px] sm:max-w-[180px] lg:max-w-[260px]">
+                <span className="text-xl font-bold leading-none tracking-wide truncate" style={{ color: textColor }}>
                     {name}<span style={{ color: accentColor }}>.</span>{subtitle}
                 </span>
                 {credentialLine && (
-                    <span className="text-xs font-medium tracking-wider mt-0.5" style={{ color: subTextColor }}>
+                    <span
+                        className="text-xs font-medium tracking-wider mt-0.5 line-clamp-2"
+                        style={{ color: subTextColor }}
+                    >
                         {credentialLine}
                     </span>
                 )}

@@ -85,15 +85,15 @@ export default function Navbar() {
             </div>
 
             <div className="container mx-auto px-6">
-                <nav className="flex items-center justify-between">
+                <nav className="flex items-center justify-between gap-4 sm:gap-6">
 
                     {/* Logo */}
-                    <a href="/" onClick={(e) => handleNavClick(e, '/#hero')} className="group">
+                    <a href="/" onClick={(e) => handleNavClick(e, '/#hero')} className="group flex min-w-0">
                         <Logo variant="dark" className="transform group-hover:scale-105 transition-transform" />
                     </a>
 
                     {/* Desktop Menu */}
-                    <div className="hidden lg:flex items-center gap-6">
+                    <div className="hidden lg:flex shrink-0 items-center gap-6">
                         <ul className="flex items-center gap-8">
                             {nav.links.map((link) => {
                                 const linkId = link.href.replace('/#', '');
@@ -127,7 +127,7 @@ export default function Navbar() {
                     </div>
 
                     {/* Mobile actions */}
-                    <div className="flex items-center gap-3 lg:hidden">
+                    <div className="flex shrink-0 items-center gap-2 sm:gap-3 lg:hidden">
                         <LanguageToggle lang={lang} onToggle={toggleLang} ariaLabel={common.languageSwitchAria} />
                         <button
                             type="button"
